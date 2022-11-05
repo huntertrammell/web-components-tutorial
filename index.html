@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width='device-width', initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Web Components</h1>
+    </header>
+    <main>
+      <section>
+        <h2>Custom Elements</h2>
+        <div class="card-container">
+          <wc-card
+            data-card-title="Some Headline"
+            data-card-subtitle="This is my card"
+            data-card-body="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti delectus, quibusdam laudantium doloribus sunt quam dolore officiis veniam ex itaque et molestiae! Voluptatibus iusto magnam exercitationem, quod vel corrupti totam."
+          ></wc-card>
+          <wc-card
+            data-card-title="Another Headline"
+            data-card-subtitle="Oops I did it again!"
+            data-card-body="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti delectus, quibusdam laudantium doloribus sunt quam dolore officiis veniam ex itaque et molestiae! Voluptatibus iusto magnam exercitationem, quod vel corrupti totam."
+          ></wc-card>
+          <wc-card
+            data-card-title="Final Card"
+            data-card-subtitle="So long, farewell"
+            data-card-body="Lorem ipsum dolor sit amet consectetur, adipisicing elit. Deleniti delectus, quibusdam laudantium doloribus sunt quam dolore officiis veniam ex itaque et molestiae! Voluptatibus iusto magnam exercitationem, quod vel corrupti totam."
+          ></wc-card>
+        </div>
+      </section>
+      <section>
+        <h2>Shadow DOM</h2>
+        <wc-heading
+          data-text="See how I ignore the style applied to H1's?"
+        ></wc-heading>
+      </section>
+      <section>
+        <h2>HTML Templates</h2>
+        <div class="card-container">
+          <wc-card-template>
+            <span slot="card-title">Some Headline</span>
+            <span slot="card-subtitle">This is my card</span>
+            <span slot="card-body"
+              >Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Eligendi minus inventore beatae? Sequi quia ad nulla molestiae
+              sapiente sed. Doloribus aliquam odit cum eum eos enim iure.
+              Debitis, architecto maxime.</span
+            >
+          </wc-card-template>
+          <wc-card-template>
+            <span slot="card-title">Another Headline</span>
+            <span slot="card-subtitle">Oops I did it again!</span>
+            <span slot="card-body"
+              >Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Eligendi minus inventore beatae? Sequi quia ad nulla molestiae
+              sapiente sed. Doloribus aliquam odit cum eum eos enim iure.
+              Debitis, architecto maxime.</span
+            >
+          </wc-card-template>
+          <wc-card-template>
+            <span slot="card-title">Final Card</span>
+            <span slot="card-subtitle">So long, farewell</span>
+            <span slot="card-body"
+              >Lorem ipsum dolor, sit amet consectetur adipisicing elit.
+              Eligendi minus inventore beatae? Sequi quia ad nulla molestiae
+              sapiente sed. Doloribus aliquam odit cum eum eos enim iure.
+              Debitis, architecto maxime.</span
+            >
+          </wc-card-template>
+        </div>
+        <template id="card-template">
+          <h3 class="card-title"><slot name="card-title">Title</slot></h3>
+          <p class="card-subtitle">
+            <slot name="card-subtitle">SubHeading</slot>
+          </p>
+          <div class="card-body">
+            <slot name="card-body">body content</slot>
+          </div>
+          <style>
+            .card-title {
+              margin: var(--card--title-margin);
+              font-size: var(--card--title-font-size);
+              font-weight: var(--card--title-font-weight);
+              text-transform: uppercase;
+              font-family: "Trebuchet MS", sans-serif;
+            }
+
+            .card-subtitle {
+              margin: var(--card--subtitle-margin);
+              font-family: var(--card--font-secondary);
+              font-style: italic;
+              font-size: var(--card--subtitle-font-size);
+              color: var(--card--subtitle-color);
+            }
+
+            .card-body {
+              margin: var(--card--body-margin);
+              padding-top: var(--card--body-padding-top);
+              font-family: var(--card--font-secondary);
+            }
+          </style>
+        </template>
+      </section>
+    </main>
+    <script src="app.js"></script>
+  </body>
+</html>
